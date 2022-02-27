@@ -22,6 +22,13 @@
 # # {new_key:new_value for (index, row) in df.iterrows()}
 import pandas
 
+
+def remove_spaces(word):
+    text = text.strip()
+    text_without_space = text.replace(" ", "")
+    return text_without_space
+
+
 nato_alphabet_data = pandas.read_csv("nato_phonetic_alphabet.csv")
 
 # TODO 1. Create a dictionary in this format:
@@ -32,5 +39,6 @@ nato_alphabet_dict = {row.letter: row.code for (index, row) in nato_alphabet_dat
 # TODO 2. Create a list of the phonetic code words from a word that the user inputs.
 
 word = input("Enter a word: ").upper()
+word = remove_spaces(word)
 output_code_list = [nato_alphabet_dict[letter] for letter in word]
 print(output_code_list)
